@@ -1,13 +1,6 @@
 import os
 import random
 
-def create_file(file_path):
-    with open(file_path, 'w') as file:
-        for _ in range(100000):
-            random_number = random.randint(1,1000)
-            file.write(f"{random_number}\n")
-
-
 def chunk_files(file_path, chunk_size):
     temp_files = [] #List of all the chunk files
     with open(file_path, 'r') as file: #opens the file to be sorted
@@ -54,11 +47,11 @@ def merge_sorted_files(file_paths, final_path):
         file.close()
     final_file.close()
 
-create_file("numbers.txt")
-
 input_file_path = "numbers.txt"
-chunk_size = 10000
+chunk_size = 2*1024*1024*1024
 
 temp_files = chunk_files(input_file_path, chunk_size)
 
 merge_sorted_files(temp_files, "sorted.txt")
+
+for 
