@@ -48,8 +48,11 @@ def merge_sorted_files(file_paths, final_path):
     final_file.close()
 
 input_file_path = "numbers.txt"
-chunk_size = 2*1024*1024*1024
+chunk_size = 1*1024*1024*1024
 
 temp_files = chunk_files(input_file_path, chunk_size)
 
 merge_sorted_files(temp_files, "sorted.txt")
+
+for file in temp_files:
+    os.remove(file)
